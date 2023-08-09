@@ -1,0 +1,142 @@
+1. NoSql kategori key/value
+Riak:
+Riak adalah database NoSQL berbasis key/value yang dirancang untuk keandalan tinggi dan skalabilitas.
+Ini merupakan sistem yang terdistribusi dan cocok untuk mengelola data dengan volume besar dan memerlukan replikasi yang kuat serta toleransi terhadap kegagalan.
+
+Mekanisme Kerja:
+
+Data di Riak disimpan dalam bentuk objek yang memiliki kunci unik.
+Riak mendukung partisi data otomatis dan replikasi di antara node-node dalam cluster, yang memungkinkan distribusi data secara merata dan ketersediaan yang tinggi.
+Setiap objek dapat memiliki beberapa versi (siblings) yang dihasilkan jika terjadi konflik saat penggabungan data dari node yang berbeda.
+Kueri dapat dilakukan dengan menggunakan kunci untuk mengambil, menyimpan, atau menghapus objek.
+
+Use Case:
+
+Penyimpanan dan Pemrosesan Data Skala Besar: Riak cocok untuk aplikasi yang membutuhkan penyimpanan dan pemrosesan data dalam skala besar, seperti platform media sosial atau e-commerce.
+Operasi Real-time: Riak dapat digunakan untuk aplikasi yang memerlukan akses data real-time dan tingkat latensi yang rendah.
+Internet of Things (IoT): Riak bisa digunakan untuk mengelola data dari perangkat IoT yang tersebar.
+Sistem Distribusi: Riak cocok untuk skenario di mana toleransi terhadap kegagalan dan ketersediaan yang tinggi sangat penting.
+
+Keunggulan:
+
+-Skalabilitas dan Ketersediaan: Riak dirancang untuk skalabilitas horizontal dengan replikasi otomatis dan partisi data yang dapat disesuaikan.
+-Toleransi Terhadap Kegagalan: Dengan replikasi dan partisi data, Riak dapat melanjutkan operasinya bahkan jika ada kegagalan pada beberapa node.
+-Fleksibilitas: Riak mendukung struktur data yang bervariasi dan dapat menangani data dengan format yang berbeda-beda.
+
+Kekurangan:
+
+-Kompleksitas Konfigurasi: Konfigurasi dan pengelolaan kluster Riak dapat menjadi rumit dan memerlukan pemahaman yang dalam tentang arsitektur dan fitur-fiturnya.
+-Kueri Terbatas: Riak memiliki dukungan query yang lebih terbatas dibandingkan beberapa database NoSQL lainnya.
+-Kurangnya Ekosistem: Meskipun Riak memiliki fitur-fitur kuat, ekosistem dan komunitas yang mendukungnya mungkin tidak sebesar beberapa alternatif lainnya.
+ Seperti biasa, dalam memilih basis data seperti Riak, penting untuk mempertimbangkan kebutuhan dan karakteristik aplikasi Anda, serta tingkat kenyamanan Anda dalam mengelola sistem yang lebih kompleks.
+
+2. NoSql kategori column-Based
+
+Hypertable:
+
+Hypertable adalah sistem basis data open-source yang dirancang khusus untuk menyimpan dan mengelola data yang sangat besar dengan performa yang tinggi.
+Ini terinspirasi oleh Google Bigtable dan menggunakan pendekatan kolom berorientasi.
+
+Mekanisme Kerja:
+
+Data di Hypertable disimpan dalam bentuk tabel kolom yang besar. Setiap tabel memiliki beberapa kolom dengan nilai-nilai terkait.
+Hypertable menggunakan struktur indeks yang kompleks untuk mempercepat operasi baca dan kueri.
+Data dibagi menjadi beberapa wilayah (regions) dan dipecah menjadi beberapa bagian untuk distribusi di antara server-node yang berbeda dalam kluster.
+Kueri dilakukan menggunakan bahasa kueri sendiri yang disebut HQL (Hypertable Query Language) atau menggunakan antarmuka seperti Thrift atau REST API.
+
+Use Case:
+
+Analitik Data Besar: Hypertable cocok untuk analisis data skala besar seperti log, sensor data, atau data bisnis yang memerlukan kueri dan agregasi cepat.
+Pencarian Real-time: Aplikasi yang memerlukan pencarian real-time pada data berukuran besar dapat mengambil manfaat dari struktur indeks yang canggih di Hypertable.
+Penyimpanan Waktu Nyata: Sistem waktu nyata atau data aliran (streaming) bisa menggunakan Hypertable untuk menyimpan dan menganalisis data seiring waktu.
+
+Keunggulan:
+
+-Skalabilitas: Hypertable dirancang untuk skalabilitas horizontal, dengan kemampuan untuk menambahkan node-node untuk meningkatkan kapasitas dan performa.
+-Performa Tinggi: Dengan struktur indeks yang canggih dan pendekatan kolom berorientasi, Hypertable dapat memberikan performa kueri yang tinggi pada data besar.
+-Distribusi Data Otomatis: Data secara otomatis didistribusikan dan dipecah menjadi wilayah-wilayah untuk memastikan ketersediaan dan kinerja.
+
+Kekurangan:
+
+-Kompleksitas Operasi: Konfigurasi dan pengelolaan kluster Hypertable bisa rumit dan memerlukan pemahaman mendalam tentang arsitektur dan fitur-fiturnya.
+-Keterbatasan Ekosistem: Hypertable mungkin tidak memiliki ekosistem dan dukungan komunitas sebesar alternatif lainnya.
+-Kueri yang Terbatas: Meskipun Hypertable dapat mengelola data dengan baik, beberapa fitur kueri yang kompleks mungkin terbatas.
+Seperti biasa, pemilihan basis data harus didasarkan pada kebutuhan aplikasi Anda, skala data, kompleksitas kueri, 
+dan kemampuan pengelolaan serta dukungan yang tersedia.
+
+3.NoSql kategori document-oriented
+
+CouchDB:
+
+CouchDB adalah sistem basis data NoSQL berbasis dokumen yang dirancang untuk kemudahan replikasi, fleksibilitas, dan konsistensi data.
+Ini memungkinkan pengelolaan data semi-struktur dengan performa yang baik dan replikasi yang kuat.
+
+Mekanisme Kerja:
+
+Data disimpan dalam bentuk dokumen JSON dengan skema yang fleksibel. Setiap dokumen memiliki kunci unik (ID).
+CouchDB menggunakan model MVCC (Multi-Version Concurrency Control) untuk mengatur konflik dan 
+konsistensi saat banyak pengguna berinteraksi dengan data yang sama secara bersamaan.
+Replikasi adalah fitur sentral dalam CouchDB. Setiap node dapat menggandakan dan menggabungkan data dengan node lain 
+secara asinkron untuk menghasilkan salinan yang konsisten dan tahan terhadap kegagalan.
+
+Use Case:
+
+Aplikasi Web: CouchDB cocok untuk aplikasi web yang memerlukan penyimpanan data semi-struktur, seperti 
+platform kolaborasi atau aplikasi berbasis konten.
+Sinkronisasi Offline: Aplikasi yang memungkinkan pengguna bekerja secara offline dan mensinkronkan 
+data saat kembali online dapat menggunakan fitur replikasi CouchDB.
+Aplikasi Mobile: CouchDB dapat digunakan dalam aplikasi mobile untuk penyimpanan data lokal dan replikasi ke server saat diperlukan.
+
+Keunggulan:
+
+-Replikasi: Fitur replikasi CouchDB sangat kuat, memungkinkan sinkronisasi data antar node atau perangkat dengan mudah.
+-Fleksibilitas Skema: Dokumen JSON memungkinkan fleksibilitas dalam struktur data tanpa mengikat ke skema kaku.
+-Konsistensi dan Kehandalan: Dengan model MVCC dan replikasi yang kuat, CouchDB dapat menjaga konsistensi data dan tahan terhadap kegagalan.
+
+Kekurangan:
+
+-Performa Query Terbatas: Kueri di CouchDB bisa terbatas dan mungkin tidak seterampil 
+ basis data yang dikhususkan untuk kueri, seperti basis data kolom-orientasi.
+-Kompleksitas Querying: Beberapa operasi kueri yang lebih kompleks atau agregasi mungkin 
+ lebih sulit dilakukan dibandingkan basis data relasional atau basis data lainnya.
+-Kurangnya Ekosistem Besar: Meskipun memiliki komunitas, ekosistem CouchDB mungkin tidak seterjangkau beberapa alternatif lainnya.
+ Seperti selalu, pemilihan basis data seperti CouchDB harus didasarkan pada kebutuhan 
+ aplikasi Anda, kemampuan pengelolaan, dan kenyamanan Anda dalam menggunakan model dokumen untuk menyimpan data.
+
+4. NoSql kategori Graph
+
+JanusGraph:
+
+JanusGraph adalah sistem basis data grafik yang dirancang untuk mengelola data yang memiliki hubungan kompleks.
+Ini memungkinkan penyimpanan, pengindeksan, dan pencarian data berbasis grafik, yang sangat berguna untuk analisis dan kueri data terkait.
+
+Mekanisme Kerja:
+
+Data disimpan dalam bentuk grafik, dengan node mewakili entitas dan tepi (edge) mewakili hubungan antara entitas tersebut.
+JanusGraph mendukung indeks khusus untuk pencarian efisien berdasarkan properti atau hubungan tertentu.
+Fitur traversing memungkinkan kueri yang kompleks, yang memungkinkan penjelajahan hubungan dalam grafik dengan lebih mudah.
+
+Use Case:
+
+Analisis Jejaring Sosial: JanusGraph cocok untuk analisis jejaring sosial, di mana hubungan antara individu atau entitas
+merupakan aspek kunci yang ingin dijelajahi.
+Rekomendasi Personal: Basis data grafik berguna untuk sistem rekomendasi personal yang memerlukan pemahaman mendalam 
+tentang koneksi dan preferensi pengguna.
+Pencarian Konten: JanusGraph dapat digunakan dalam sistem pencarian yang membutuhkan pemahaman tentang hubungan antara berbagai jenis konten.
+Analisis Jaringan: Aplikasi yang memerlukan analisis jaringan kompleks, seperti analisis perutean dalam jaringan 
+komputer, dapat memanfaatkan struktur basis data grafik.
+
+Keunggulan:
+
+-Model Data Grafik: Cocok untuk data yang memiliki hubungan kompleks dan memerlukan analisis berbasis hubungan.
+-Kueri yang Kuat: JanusGraph memungkinkan kueri yang kuat melalui traversing, memungkinkan ekspresi yang kompleks.
+-Performa Cepat: Basis data grafik seperti JanusGraph cenderung memberikan performa tinggi pada operasi terkait hubungan.
+
+Kekurangan:
+
+-Kurang Fleksibel untuk Data Non-Grafik: Jika sebagian besar data Anda tidak memiliki struktur grafik yang jelas, menggunakan basis data grafik mungkin tidak efisien.
+-Kompleksitas Querying: Sementara kueri grafik memungkinkan ekspresi kompleks, operasi kueri yang lebih sederhana bisa lebih kompleks daripada dalam basis data yang lebih tradisional.
+-Kurangnya Skala Horisontal: Beberapa basis data grafik, termasuk JanusGraph, mungkin tidak sekuat basis data yang didesain khusus untuk skalabilitas horizontal.
+
+Sebagai bagian dari pemilihan basis data, pertimbangkan kebutuhan analisis hubungan dan kompleksitas data Anda.
+JanusGraph sangat berguna jika data Anda memiliki struktur grafik yang jelas dan kueri berbasis hubungan adalah aspek penting dari aplikasi Anda.
